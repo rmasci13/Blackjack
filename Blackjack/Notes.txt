@@ -1,0 +1,20 @@
+Enums:
+    Card face:
+         Value in () 
+    Suit enum:
+        Can use the unicodes
+    Might need to use nested for in the deck class and its just passed in the constructor of card which then sets the suit and face and value
+Classes:
+    Card:
+        Variables:
+            char suit
+            int value
+            char face
+        Method:
+            display() - this isnt even going to work because cards need to be in a row
+    Deck:
+        cards 
+    Game:
+        Deck
+        takes variable number of decks
+        Has to do with players balance, do I need a player class or just controlled by the game, maybe game
