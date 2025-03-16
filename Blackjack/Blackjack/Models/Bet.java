@@ -8,7 +8,7 @@ public class Bet {
     }
 
     public void doubleBet()  {
-        this.value = value * 2;
+        this.value = this.value * 2;
     }
 
     public int getValue() {

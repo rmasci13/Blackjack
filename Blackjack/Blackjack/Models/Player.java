@@ -15,4 +15,10 @@ public class Player extends Person {
     public void updateBalance(int change) {
         this.balance = balance + change;
     }
+
+    @Override
+    public void displayHand() {
+        System.out.println("Your hand is: ");
+        super.displayHand();
+    }
 }

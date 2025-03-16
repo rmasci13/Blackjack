@@ -61,12 +61,13 @@ public class Game {
                 break;
             }
             // Shuffle if used over 3/4 of the deck
-            if (dealtCards > (deck.getDeck().size() * 3) / 4) {
+            if (dealtCards > ((numDecks * 52) * (0.65))) {
                 System.out.println("The deck has been shuffled");
                 resetDeck();
                 dealtCards = 0;
             }
             playRound();
+            System.out.println(dealtCards);
         }
     }
 
@@ -93,8 +94,13 @@ public class Game {
         } 
         else {
             moveLoop();
-            dealerMoves();
-            determineWinner();
+            if (checkUserBust()) {
+                handleUserBust();
+            }
+            else {
+                dealerMoves();
+                determineWinner();
+            }
         }
         resetHands();
     }
@@ -226,6 +232,15 @@ public class Game {
         }
     }
 
+    private boolean checkUserBust() {
+        return user.getHandValue() > 21;
+    }
+
+    private void handleUserBust() {
+        displayFullGame();
+        System.out.println("You busted with a " + user.getHandValue() + ". Unlucky!");
+    }
+
     private void determineWinner() {
         if (dealer.getHandValue() > 21 || userWinCheck()) {
             System.out.println("Congratulations! You won " + currentBet.getValue() * 2 + " chips!");
@@ -236,12 +251,7 @@ public class Game {
             user.updateBalance(currentBet.getValue());
         } 
         else {
-            if (user.getHandValue() > 21) {
-                System.out.println("You busted! Better luck next game!");
-            } 
-            else {
-                System.out.println("Dealer wins with a " + dealer.getHandValue() + " against your " + user.getHandValue());
-            }
+            System.out.println("Dealer wins with a " + dealer.getHandValue() + " against your " + user.getHandValue());
         }
     }
 

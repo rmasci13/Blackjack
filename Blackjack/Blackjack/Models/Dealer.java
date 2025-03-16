@@ -5,9 +5,14 @@ public class Dealer extends Person {
         super(false);
     }
 
-
+    @Override
+    public void displayHand() {
+        System.out.println("Dealer's hand is: ");
+        super.displayHand();
+    }
 
     public void displayHiddenHand() {
+        System.out.println("Dealer's hand is: ");
         System.out.println();
         for (int i = 0; i < hand.size(); i++) {
             hand.get(i).displayTop();
